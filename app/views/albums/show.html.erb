@@ -1,0 +1,348 @@
+
+
+<script>
+
+function togglePlay() {
+  var myAudio = document.getElementById("audioplayer");
+  return myAudio.paused ? myAudio.play() : myAudio.pause();
+};
+
+
+    function checkplay() {
+        let inputs = document.getElementById("btnControl");
+        inputs.checked = true;
+    }
+    
+     function checkpause() {
+            let inputs = document.getElementById("btnControl");
+        inputs.checked = false;
+    }
+
+    function changesong(currentsong) {
+       document.getElementById("audioplayer").src = currentsong;
+    }
+
+    function changetracktext(trackname) {
+        document.getElementById("trackname").innerHTML = trackname;
+    }
+</script>
+
+<style>
+
+::-webkit-scrollbar {
+  height: 20px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(196, 186, 156, 0);
+  border: 1px inset grey;
+  border-radius: 40px;
+  
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: radial-gradient(#503819, #16110b);
+  border: 1px solid #1a1208;
+  border-radius: 40px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.466);
+  
+}
+::-webkit-scrollbar-thumb:active {
+ background: radial-gradient(#af7931, #554026);
+}
+::-webkit-scrollbar-button:single-button {
+  background: radial-gradient(#503819, #16110b);
+  border: 1px solid #1a1208;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.466);
+  width: 20px;
+}
+::-webkit-scrollbar-button:single-button:active {
+  background: radial-gradient(#af7931, #554026);
+  border: 1px solid #1a1208;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.466);
+  width: 20px;
+}
+
+body{
+     overflow: hidden;
+}
+
+
+ 
+
+    .trackbtn{
+        display:flex;
+        background-image: url("/images/trackbutton.png");
+        background-size:100%;
+        border: 4px outset #b29065;
+        margin: 5px;
+        justify-content:center;
+        align-items: center;
+        height:20%;
+        width:50%;
+        font-family: typewriter;
+        box-sizing:border-box;
+        box-shadow: 6px 5px 5px 1px rgb(0,0,0,0.5);
+       
+       
+    
+    }
+
+      .trackbtn:active{
+        transform: scale(0.966);
+        transform: translateY(2px);
+        border: 4px inset #b29065;
+       
+    
+    }
+   
+    .albuminfobox{
+        display:flex;
+        
+        flex-direction: column;
+        width: 70%;
+        height:20%;
+        margin-left:15px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.775), rgba(0, 0, 0, 0));
+        
+        
+        
+    }
+     .appwindow{
+        display:flex;
+        flex-direction: column;
+        flex-wrap:wrap;
+        min-width: 99vw;
+        
+        height: 99vh;
+        background-image: url("/images/jukebackground.jpg");
+        background-size: cover;
+        border: 8px groove rgb(211,153,0,0.65);
+        box-sizing:border-box;
+        overflow:hidden;
+        
+    }
+    .lefthalf{
+        display:flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        width:50%;
+        height:100%;
+        overflow: hidden;
+    }
+    .righthalf{
+        display:flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        width:50%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .albumart{
+        display:flex;
+        margin-left:15px;
+        margin-bottom:15px;
+        width: 45vw;
+        height: 75vh;
+        background-image: url("<%= @album.albumArt %>");
+        background-size: cover;
+        border: 6px groove rgb(211,153,0);
+        opacity: 0.75;
+        z-index: 2; 
+        overflow: hidden;
+        
+
+    }
+    .infofont{
+        margin: 3px;
+        padding: 0;
+        font-family: jukeboxfont;
+        font-size: 2.5vmin;
+        color:white;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: rgb(56, 65, 14);
+    }
+    .songlist{
+      display:flex;
+      flex-wrap:wrap;
+      flex-direction: column;
+      width: 100%;
+      height:57%;
+      margin:5px;
+      margin-right:35px;
+      overflow:scroll;
+      z-index: 4;
+     overflow-y: hidden;
+     
+
+     
+
+
+    }
+    .recordbox{
+     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+     display:flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     margin: 0;
+     justify-content:center;
+     position:absolute;
+     top: 353px;
+     overflow: hidden;
+     
+
+     
+     
+    }
+     .arm{
+        display: flex;
+        position:absolute;
+        background-image: url("/images/arm.png");
+        width: 380px;
+        height: 180px;
+        background-size: cover;
+        margin: 0;
+        top: 79.5%;
+        left: 35%;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 66%, 0 66%);
+        overflow: hidden;
+       
+    }
+    .record{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        background-image: url("/images/record.png");
+        width: 550px;
+        height: 550px;
+        background-size: cover;
+        margin: 0;
+        overflow: hidden;
+    }
+    .tracktext{
+        display:flex;
+        justify-content: center;
+        align-content: center;
+        text-align:center;
+        overflow: hidden;
+        font-size: 12px;  
+        margin-bottom: 70px;
+        font-family: jukeboxfont;
+    }
+    .artisttext{
+       
+        font-family: jukeboxfont;
+    }
+  
+     #btnControl {
+        display: none;
+      }
+      #btnControl:checked + label {
+          transform-origin: center center;
+        animation: spin 4s linear infinite;
+      }
+  
+ 
+
+    @keyFrames spin {
+    100%{transform: rotate(360deg);}
+    }
+  
+  audio::-webkit-media-controls-panel {
+
+}
+audio::-webkit-media-controls-play-button{
+      background-color:rgb(255,255,255,1);
+     border-radius:50%
+}
+audio::-webkit-media-controls-play-button{
+      background-color:rgb(255,255,255,1);
+     border-radius:50%
+}
+audio::-webkit-media-controls-current-time-display{
+    display: hidden;
+}
+
+   .playbutton{
+    position:absolute;
+    top: 600px;
+    left: 800px;
+    z-index:2;
+   }
+
+   .homebutton {
+    background-image: url("/images/home.png");
+    background-size:cover;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    position:relative;
+    top: 95px;
+    left: 570px;
+   }
+     .homebutton:active {
+    background-image: url("/images/homepress.png");
+     }
+</style>
+
+    <div class= "appwindow">
+        <div class = "lefthalf">
+            <div class = albuminfobox>
+                <p class = "infofont"><%= @album.title %></p>
+                <p class = "infofont">by <%= @artist.name %></p>
+                <p class = "infofont">( <%= @album.releaseYear %> )</p>
+                <p class = "infofont"><%= @album.genre %></p>
+            </div>
+
+            <div class = "albumart"></div>
+        </div>
+
+        <div class = "righthalf">
+        
+            <div class = "songlist">
+                    <% @songs.each do |song| %>
+                        <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>')"><%= song.name %> </button>
+                    <% end %>
+            </div>
+
+            
+            
+          <audio  id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
+
+                <div class = "arm" ></div>
+                <div class = "recordbox">
+                    <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
+                        <label class="btn" for="btnControl">
+                            <div  class = "record">
+                                <div class = "tracktext" id = "trackname">
+                                   
+                                </div>
+                                 <div class = "artisttext" id = "artistname">
+                                   <%= @artist.name %>
+                                </div>
+                                
+                                
+                            </div>
+                        </label>
+                </div>
+                <a href="/#"> <div class = "homebutton"></div> </a>
+        </div>
+           
+
+            
+
+        
+  
+    </div>
+
+      
+
+
+
+
+
+
+
