@@ -1,12 +1,13 @@
 <style>
 
+
 h1 {
   font-family: jukeboxfont;
   color: rgb(56, 65, 14);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: rgb(211,153,0,0.65);
-    font-size: 5em;
-    box-shadow:0 0 5px 5px yellow
+    font-size: 4em;
+    
 }
 
 .select{
@@ -20,7 +21,7 @@ h1 {
 .carousel-inner {
 width:500px;
 height:500px;
- box-shadow:0 0 5px 5px yellow
+ box-shadow:0 0 5px 5px rgb(211,153,0,0.65)
  
 }
 
@@ -34,18 +35,23 @@ height:500px;
   width: 100vw;
   background-image: url("/images/mainback.jpg");
   background-size: cover;
+  border: 8px groove rgb(211,153,0,0.65);
+  box-sizing:border-box;
+  overflow:hidden;
+  box-sizing: border-box;
 }
 
-.buttons {
-  color:rgb(211,153,0)
-}
 
+
+.carousel{
+  
+}
 
 
 
 
 </style>
-
+ 
 <body>
 
 
@@ -53,7 +59,7 @@ height:500px;
 
 <div class = "albumcontainer">
 <h1>JUKEBOX BOOGALOO</h1>
-<p class = "select">Select and Album</p>
+<p class = "select">Album Select/p>
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false"  data-bs-touch="true">
     <div class="carousel-inner">
       <% @albums.each_with_index do |album, i| %>
