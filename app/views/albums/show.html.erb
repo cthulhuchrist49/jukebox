@@ -19,7 +19,8 @@ function togglePlay() {
     }
 
     function changesong(currentsong) {
-       document.getElementById("audioplayer").src = currentsong;
+       songs.push(currentsong);
+       console.log(songs.length)  
     }
 
     function changetracktext(trackname) {
@@ -284,19 +285,18 @@ body{
         
             <div class = "songlist">
                     <% @songs.each do |song| %>
-                        <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>')"><%= song.name %> </button>
+                        <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>'), play_all()"><%= song.name %> </button>
                     <% end %>
             </div>
 
             
             
-          <audio  id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
-
+        
                 <div class = "arm" ></div>
                 <div class = "recordbox">
                     <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
                         <label class="btn" for="btnControl">
-                            <div  class = "record">
+                            <div class = "record">
                                 <div class = "tracktext" id = "trackname">
                                    
                                 </div>
