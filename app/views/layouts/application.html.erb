@@ -21,26 +21,23 @@
     <%= javascript_importmap_tags %>
 
 <script>
-    //This plays a file, and call a callback once it completed (if a callback is set)
- 
-
-       
-        
-    
-
-    //Changed the name to better reflect the functionality
     function play_sound_queue() {
       
       var myaudio = document.getElementById("audioplayer")
       document.getElementById("audioplayer").src = songs[0];
+      document.getElementById("trackname").innerHTML = songnames[0];
       if(songs.length>0){
           myaudio.addEventListener('ended', nextrack);
           function nextrack(){
             myaudio.removeEventListener('ended', nextrack)
             console.log("hit");
             songs.shift(); 
+            songnames.shift();
             play_sound_queue();
           }
+      }
+      if(songnames.length == 0){
+        document.getElementById("trackname").innerHTML = "";
       }
     }
 
@@ -49,6 +46,7 @@
     };
     
     var songs = [];
+    var songnames = [];
    
   
     function play_all() {
@@ -56,20 +54,17 @@
       if(songs.length ==1){
       play_sound_queue();
       }
-      }
+    }
     
-     
-
-     
   </script>
 
 
   </head>
 
   <body>
-<audio  id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
-<a href="javascript:;" onclick="play_all();">PLAY THIS!</a>
-<a href="javascript:;" onclick="togglePlay();">Pause!</a>
+    <audio  id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
+    <a href="javascript:;" onclick="play_all();">PLAY THIS!</a>
+    <a href="javascript:;" onclick="togglePlay();">Pause!</a>
 
     <%= yield %>
   </body>
