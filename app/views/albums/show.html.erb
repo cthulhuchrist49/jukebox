@@ -1,5 +1,7 @@
 
+<head>
 
+</head>
 
 
 <style>
@@ -221,9 +223,13 @@ body{
                 <p class = "infofont">( <%= @album.releaseYear %> )</p>
                 <p class = "infofont"><%= @album.genre %></p>
             
-            <button type="button" class="playallbtn" onclick="addall()">Play Album </button>
+            <button type="button" class="playallbtn" 
+           onclick="addall(<%= @album.id %>, '<%=@artist.name%>')"
+            
+            >Play Album </button>
                
             </div>
+
 
          
 
@@ -233,7 +239,7 @@ body{
         
             <div class = "songlist">
                     <% @songs.each do |song| %>
-                        <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>'), play_all()"><%= song.name %> </button>
+                        <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>', '<%=@artist.name%>'), play_all()"><%= song.name %> </button>
                     <% end %>
             </div>
               <div class = "homebutton" data-bs-toggle="modal" data-bs-target="#exampleModal"></div> 

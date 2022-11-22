@@ -82,98 +82,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-<script >
 
-function togglePlay() {
-  var myAudio = document.getElementById("audioplayer");
-  return myAudio.paused? myAudio.play() : myAudio.pause();
-};
-
-
-    function checkplay() {
-        let inputs = document.getElementById("btnControl");
-        inputs.checked = true;
-    }
-    
-     function checkpause() {
-            let inputs = document.getElementById("btnControl");
-        inputs.checked = false;
-    }
-
-    function changesong(currentsong) {
-       songs.push(currentsong);
-        
-    }
-   
- function addall(){
-         <% @songs.each do |song| %>
-            play_all()
-            songs.push(<%= raw song.songlinky%>)
-            songnames.push('<%=song.name%>')
-             
-          <% end %>
-      }
-   
-    function changetracktext(trackname) {
-       songnames.push(trackname);
-    }
-    function play_sound_queue() {
-      
-      var myaudio = document.getElementById("audioplayer")
-      document.getElementById("audioplayer").src = songs[0];
-      document.getElementById("trackname").innerHTML = songnames[0];
-      if(songs.length>0){
-          myaudio.addEventListener('ended', nextrack);
-          function nextrack(){
-            myaudio.removeEventListener('ended', nextrack)
-            console.log("hit");
-            songs.shift(); 
-            songnames.shift();
-            play_sound_queue();
-          }
-      }
-      if(songnames.length == 0){
-        document.getElementById("trackname").innerHTML = "";
-      }
-    }
-
-   
-    
-    var songs = [];
-    var songnames = [];
-   
-  
-    function play_all() {
-      
-      if(songs.length ==1){
-      play_sound_queue();
-      }
-    }
-    
-  </script>
 
 
   </head>
 
-  <body >
-    <audio data-turbo-permanent id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
-<div class = "arm" ></div>
-                <div class = "recordbox">
-                    <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
-                        <label class="btn" for="btnControl">
-                            <div class = "record">
-                                <div class = "tracktext" id = "trackname">
-                                   
-                                </div>
-                                 <div class = "artisttext" id = "artistname">
-                                   <%= @artist.name %>
-                                </div>
-                                
-                                
-                            </div>
-                        </label>
-                </div>
-              
+  <body >         
 
     <%= yield %>
   </body>
