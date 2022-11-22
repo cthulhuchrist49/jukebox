@@ -1,6 +1,8 @@
 class AlbumsController < ApplicationController
     def index
         @albums = Album.all
+        @artist = Artist.all
+        @songs = Song.all
         
     end
 
@@ -13,7 +15,7 @@ class AlbumsController < ApplicationController
     end
 
     def songselect
-        @album = Album.all
+        @albums = Album.all
         @artist = Artist.all
         @songs = Song.all
     end

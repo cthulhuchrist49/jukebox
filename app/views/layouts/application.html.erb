@@ -15,6 +15,68 @@
     font-family: typewriter;
     src: url("/fonts/atwriter.ttf");
     }
+
+    .recordbox{
+     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+     display:flex;
+     flex-wrap: wrap;
+     flex-direction: row;
+     margin: 0;
+     justify-content:center;
+     position:absolute;
+     top: 360px;
+     left: 350px;
+     overflow: hidden;
+     z-index:6;
+     
+
+     
+     
+    }
+     .arm{
+        display: flex;
+        position:absolute;
+        background-image: url("/images/arm.png");
+        width: 380px;
+        height: 180px;
+        background-size: cover;
+        margin: 0;
+        top: 80.4%;
+        left: 10%;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 100% 66%, 0 66%);
+        overflow: hidden;
+       
+    }
+    .record{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        background-image: url("/images/record.png");
+        width: 550px;
+        height: 550px;
+        background-size: cover;
+        margin: 0;
+        overflow: hidden;
+    }
+      #btnControl {
+        display: none;
+      }
+      #btnControl:checked + label {
+          transform-origin: center center;
+        animation: spin 4s linear infinite;
+      }
+  
+ 
+
+    @keyFrames spin {
+    100%{transform: rotate(360deg);}
+    }
+  
+  
+
+  
     </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -95,7 +157,23 @@ function togglePlay() {
 
   <body >
     <audio data-turbo-permanent id="audioplayer" onplay = "checkplay()" onpause = "checkpause()" autoplay class = "playbutton"  src = ""  > </audio> 
-
+<div class = "arm" ></div>
+                <div class = "recordbox">
+                    <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
+                        <label class="btn" for="btnControl">
+                            <div class = "record">
+                                <div class = "tracktext" id = "trackname">
+                                   
+                                </div>
+                                 <div class = "artisttext" id = "artistname">
+                                   <%= @artist.name %>
+                                </div>
+                                
+                                
+                            </div>
+                        </label>
+                </div>
+              
 
     <%= yield %>
   </body>

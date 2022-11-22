@@ -1,6 +1,8 @@
 <style>
 
-
+body{
+  overflow: hidden;
+}
 h1 {
   font-family: jukeboxfont;
   color: rgb(56, 65, 14);
@@ -20,14 +22,14 @@ h1 {
 
 .carousel-inner {
 width:500px;
-height:500px;
+height:480px;
  box-shadow:0 0 5px 5px rgb(211,153,0,0.65)
  
 }
 
 .albumcontainer {
   display:flex;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   flex-direction:column;
   flex-wrap:wrap;
@@ -47,24 +49,70 @@ height:500px;
   
 }
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-items:center;
+    align-items: center;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgb(0,0,0,0);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+}
 
 
-
+.getstartbutton {
+    background-image: url("/images/home.png");
+    background-size:cover;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    position:absolute;
+    top: 225px;
+    
+   
+   }
+     .getstartbutton:active {
+    background-image: url("/images/homepress.png");
+    
+     }
+   
 </style>
  
 <body>
 
+<script>
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+
+
+function hidethis(){
+
+    let mystart = document.getElementById('getstart')
+    mystart.style.display = 'none';
+  }
+
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+<div id="hi"></div>
 <div class = "albumcontainer">
-<h1>JUKEBOX BOOGALOO</h1>
-<p class = "select">Album Select</p>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <p class = "select">Album Select</p>
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false"  data-bs-touch="true">
     <div class="carousel-inner">
       <% @albums.each_with_index do |album, i| %>
         <div class="carousel-item <%= "active" if i == 0 %>">
-          <%= link_to "/album/#{i+1}" do %> <img src="<%= album.albumArt%>"   class="d-block w-100"> <%end%>
+          <button data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dooby(<%=i+1%>), hidethis()"><img src="<%= album.albumArt%>"   class="d-block w-100"> </button>
             
         </div>
         <%end%>
@@ -79,7 +127,11 @@ height:500px;
           </button>
         </div>
     </div>
-  
+    </div>
+  </div>
+</div>
+ 
 </div>
 
+<div class = "getstartbutton" id="getstart" data-bs-toggle="modal" data-bs-target="#exampleModal"></div> 
 </body>

@@ -9,6 +9,8 @@ Rails.start()
 ActiveStorage.start()
 
 
+
+
 function dooby(thingy){
 Rails.ajax({
     url: "/album/"+thingy,
@@ -21,6 +23,7 @@ Rails.ajax({
     }
 })
 }
+
 
 window.dooby = dooby;
 

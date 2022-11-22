@@ -84,7 +84,7 @@ body{
         width:95%;
         font-family: typewriter;
         box-sizing:border-box;
-        box-shadow: 6px 5px 5px 1px rgb(0,0,0,0.5);
+        box-shadow: 0px 0px 15px 4px rgb(211,153,0,0.75);
        
        
     
@@ -107,7 +107,7 @@ body{
         width: 40%;
         height:50vh;
         margin-left:15px;
-        background: linear-gradient(90deg, rgba(0, 0, 0, 0.775), rgba(0, 0, 0, 0));
+        background: linear-gradient(rgba(45, 45, 32, 0.916)33%,  rgba(0, 0, 0, 0),rgba(45, 45, 32, 0.916)66%);
         
         
         
@@ -119,7 +119,7 @@ body{
         min-width: 99vw;
         
         height: 100vh;
-        background-image: url("/images/jukebackground.jpg");
+        background-image: url("/images/mainback.jpg");
         background-size: cover;
         border: 8px groove rgb(211,153,0,0.65);
         box-sizing:border-box;
@@ -178,54 +178,8 @@ body{
       overflow:scroll;
       z-index: 4;
      overflow-y: hidden;
-     
-
-     
-
-
     }
-    .recordbox{
-     clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-     display:flex;
-     flex-wrap: wrap;
-     flex-direction: row;
-     margin: 0;
-     justify-content:center;
-     position:absolute;
-     top: 360px;
-     overflow: hidden;
-     
-
-     
-     
-    }
-     .arm{
-        display: flex;
-        position:absolute;
-        background-image: url("/images/arm.png");
-        width: 380px;
-        height: 180px;
-        background-size: cover;
-        margin: 0;
-        top: 80.4%;
-        left: 35%;
-        z-index: 1;
-        clip-path: polygon(0 0, 100% 0, 100% 66%, 0 66%);
-        overflow: hidden;
-       
-    }
-    .record{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-        background-image: url("/images/record.png");
-        width: 550px;
-        height: 550px;
-        background-size: cover;
-        margin: 0;
-        overflow: hidden;
-    }
+    
     .tracktext{
         display:flex;
         justify-content: center;
@@ -240,23 +194,6 @@ body{
        
         font-family: jukeboxfont;
     }
-  
-     #btnControl {
-        display: none;
-      }
-      #btnControl:checked + label {
-          transform-origin: center center;
-        animation: spin 4s linear infinite;
-      }
-  
- 
-
-    @keyFrames spin {
-    100%{transform: rotate(360deg);}
-    }
-  
-  
-
    .homebutton {
     background-image: url("/images/home.png");
     background-size:cover;
@@ -299,34 +236,8 @@ body{
                         <button type="button" class="trackbtn" onclick="changesong(<%=song.songlinky%>), changetracktext('<%=song.name%>'), play_all()"><%= song.name %> </button>
                     <% end %>
             </div>
-
-            
-            
-        
-                <div class = "arm" ></div>
-                <div class = "recordbox">
-                    <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
-                        <label class="btn" for="btnControl">
-                            <div class = "record">
-                                <div class = "tracktext" id = "trackname">
-                                   
-                                </div>
-                                 <div class = "artisttext" id = "artistname">
-                                   <%= @artist.name %>
-                                </div>
-                                
-                                
-                            </div>
-                        </label>
-                </div>
-                <a href="/#"> <div class = "homebutton"></div> </a>
+              <div class = "homebutton" data-bs-toggle="modal" data-bs-target="#exampleModal"></div> 
         </div>
-           
-
-            
-
-        
-  
     </div>
 
     
