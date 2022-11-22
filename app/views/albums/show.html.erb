@@ -1,32 +1,6 @@
 
 
-<script>
 
-function togglePlay() {
-  var myAudio = document.getElementById("audioplayer");
-  return myAudio.paused? myAudio.play() : myAudio.pause();
-};
-
-
-    function checkplay() {
-        let inputs = document.getElementById("btnControl");
-        inputs.checked = true;
-    }
-    
-     function checkpause() {
-            let inputs = document.getElementById("btnControl");
-        inputs.checked = false;
-    }
-
-    function changesong(currentsong) {
-       songs.push(currentsong);
-       console.log(songs.length)  
-    }
-
-    function changetracktext(trackname) {
-       songnames.push(trackname);
-    }
-</script>
 
 <style>
 
@@ -97,13 +71,41 @@ body{
        
     
     }
+     .playallbtn{
+        display:flex;
+        background-image: url("/images/trackbutton.png");
+        background-size:100%;
+        border: 4px outset #b29065;
+        margin: 6px;
+        margin-top:115px;
+        justify-content:center;
+        align-items: center;
+        height:18%;
+        width:95%;
+        font-family: typewriter;
+        box-sizing:border-box;
+        box-shadow: 6px 5px 5px 1px rgb(0,0,0,0.5);
+       
+       
+    
+    }
+
+      .playallbtn:active{
+        transform: scale(0.966);
+        transform: translateY(2px);
+        border: 4px inset #b29065;
+       
+    
+    }
    
     .albuminfobox{
         display:flex;
-        
+        border: 6px groove rgb(211,153,0);
         flex-direction: column;
-        width: 70%;
-        height:20%;
+        margin-top:15px;
+        margin-left:0px;
+        width: 40%;
+        height:50vh;
         margin-left:15px;
         background: linear-gradient(90deg, rgba(0, 0, 0, 0.775), rgba(0, 0, 0, 0));
         
@@ -142,10 +144,11 @@ body{
     }
     .albumart{
         display:flex;
-        margin-left:15px;
-        margin-bottom:15px;
-        width: 45vw;
-        height: 75vh;
+        flex-wrap:wrap;
+        margin: 15px;
+        margin-right:0px;
+        width: 25vw;
+        height: 50vh;
         background-image: url("<%= @album.albumArt %>");
         background-size: cover;
         border: 6px groove rgb(211,153,0);
@@ -269,16 +272,24 @@ body{
      }
 </style>
 
+
+
     <div class= "appwindow">
         <div class = "lefthalf">
+            
+            <div class = "albumart"></div>
             <div class = albuminfobox>
                 <p class = "infofont"><%= @album.title %></p>
                 <p class = "infofont">by <%= @artist.name %></p>
                 <p class = "infofont">( <%= @album.releaseYear %> )</p>
                 <p class = "infofont"><%= @album.genre %></p>
+            
+            <button type="button" class="playallbtn" onclick="addall()">Play Album </button>
+               
             </div>
 
-            <div class = "albumart"></div>
+         
+
         </div>
 
         <div class = "righthalf">
@@ -318,8 +329,7 @@ body{
   
     </div>
 
-      
-
+    
 
 
 

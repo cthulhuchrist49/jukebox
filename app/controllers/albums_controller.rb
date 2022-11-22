@@ -8,6 +8,13 @@ class AlbumsController < ApplicationController
         @album = Album.find(params[:id])
         @artist = Artist.find(params[:id])
         @songs = Song.where(album_id: (params[:id]))
-        
+       
+
+    end
+
+    def songselect
+        @album = Album.all
+        @artist = Artist.all
+        @songs = Song.all
     end
 end

@@ -64,7 +64,7 @@ height:500px;
     <div class="carousel-inner">
       <% @albums.each_with_index do |album, i| %>
         <div class="carousel-item <%= "active" if i == 0 %>">
-          <%= link_to "/album/#{i+1}" do %> <img src="<%= album.albumArt%>" class="d-block w-100"> <%end%>
+          <%= link_to "/album/#{i+1}" do %> <img src="<%= album.albumArt%>"   class="d-block w-100"> <%end%>
             
         </div>
         <%end%>
