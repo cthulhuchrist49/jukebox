@@ -33,21 +33,7 @@
      
      
     }
-     .arm{
-        display: flex;
-        position:absolute;
-        background-image: url("/images/arm.png");
-        width: 380px;
-        height: 180px;
-        background-size: cover;
-        margin: 0;
-        top: 80.4%;
-        left: 10%;
-        z-index: 1;
-        clip-path: polygon(0 0, 100% 0, 100% 66%, 0 66%);
-        overflow: hidden;
-       
-    }
+  
     .record{
         display: flex;
         justify-content: center;
@@ -62,12 +48,20 @@
     }
       #btnControl {
         display: none;
+        border:0px;
       }
       #btnControl:checked + label {
           transform-origin: center center;
         animation: spin 4s linear infinite;
+        border:0px;
       }
-  
+     #btnControl:active + label {
+          border:0px;
+      }
+       #btnControl + label  {
+          border:0px;
+      }
+      
  
 
     @keyFrames spin {

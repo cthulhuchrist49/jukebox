@@ -25,7 +25,7 @@ h1 {
 .carousel-inner {
 width:500px;
 height:480px;
- box-shadow:0 0 5px 5px rgb(211,153,0,0.65)
+box-shadow:0 0 5px 5px rgb(211,153,0,0.65)
  
 }
 
@@ -37,7 +37,7 @@ height:480px;
   flex-wrap:wrap;
   height: 100vh;
   width: 100vw;
-  background-image: url("/images/mainback.jpg");
+  background-image: url("/images/jukebackground.jpg");
   background-size: cover;
   border: 8px groove rgb(211,153,0,0.65);
   box-sizing:border-box;
@@ -47,9 +47,7 @@ height:480px;
 
 
 
-.carousel{
-  
-}
+
 
 .modal-content {
     display: flex;
@@ -67,20 +65,22 @@ height:480px;
 
 
 .getstartbutton {
-    background-image: url("/images/home.png");
+    background-image: url("/images/startscreen.png");
     background-size:cover;
-    width: 50px;
-    height: 50px;
-    z-index: 5;
+    width: 900px;
+    height: 450px;
+    z-index: 9;
     position:absolute;
-    top: 225px;
+    top: 75px;
     
    
    }
      .getstartbutton:active {
-    background-image: url("/images/homepress.png");
+    background-image: url("/images/startscreenpress.png");
     
      }
+
+     
    
 </style>
  
@@ -195,7 +195,7 @@ function hidethis(){
     <div class="carousel-inner">
       <% @albums.each_with_index do |album, i| %>
         <div class="carousel-item <%= "active" if i == 0 %>">
-          <button data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dooby(<%=i+1%>), hidethis()"><img src="<%= album.albumArt%>"   class="d-block w-100"> </button>
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="dooby(<%=i+1%>), hidethis()"><img src="<%= album.albumArt%>"   class="d-block w-100"> </div>
             
         </div>
         <%end%>
@@ -217,7 +217,6 @@ function hidethis(){
 </div>
 
 <div class = "getstartbutton" id="getstart" data-bs-toggle="modal" data-bs-target="#exampleModal"></div> 
-<div class = "arm" ></div>
                 <div class = "recordbox">
                     <input onclick="togglePlay()"  type="checkbox" id="btnControl" />
                         <label class="btn" for="btnControl">
